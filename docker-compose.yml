@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./fripa.db
+      - ADMIN_PASSWORD=fripaAdmin123
+      - ENVIRONMENT=production
+    volumes:
+      - ./uploads:/app/uploads
+      - ./fripa.db:/app/fripa.db
+    restart: unless-stopped
